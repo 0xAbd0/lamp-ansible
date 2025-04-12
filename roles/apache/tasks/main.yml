@@ -1,0 +1,20 @@
+---
+- name: Install Apache
+  dnf:
+    name: httpd
+    state: present
+
+- name: Start and enable Apache
+  service:
+    name: httpd
+    state: started
+    enabled: true
+
+- name: Copy index.php
+  copy:
+    src: index.php
+    dest: /var/www/html/index.php
+    owner: apache
+    group: apache
+    mode: '0644'
+  notify: Restart Apache

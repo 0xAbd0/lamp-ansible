@@ -1,0 +1,10 @@
+---
+- name: LAMP Deployment
+  hosts: webservers
+  become: true
+
+  roles:
+    - apache
+    - mysql
+    - php
+    - firewall
