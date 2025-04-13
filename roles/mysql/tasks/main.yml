@@ -1,0 +1,36 @@
+---
+- name: Install MariaDB server
+  ansible.builtin.dnf:
+    name: mariadb-server
+    state: present
+
+- name: Start and enable MariaDB
+  ansible.builtin.service:
+    name: mariadb
+    state: started
+    enabled: true
+
+- name: Switch root to password auth plugin (mysql_native_password)
+  ansible.builtin.shell: |
+    mysql_secure_installation << EOF
+    y
+    {{ mariadb_root_password }}
+    {{ mariadb_root_password }}
+    y
+    y
+    y
+    y
+    EOF
+  args:
+    executable: /bin/bash
+
+- name: Create /root/.my.cnf for future root logins
+  ansible.builtin.copy:
+    dest: /root/.my.cnf
+    content: |
+      [client]
+      user=root
+      password={{ mariadb_root_password }}
+    owner: root
+    group: root
+    mode: '0600'

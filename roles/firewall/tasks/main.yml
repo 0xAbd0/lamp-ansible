@@ -1,0 +1,10 @@
+---
+- name: Open HTTP and HTTPS ports
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: yes
+  loop:
+    - 80/tcp
+    - 443/tcp

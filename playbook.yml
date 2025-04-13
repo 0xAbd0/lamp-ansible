@@ -1,8 +1,9 @@
 ---
 - name: LAMP Deployment
-  hosts: webservers
+# for now just test on local machine
+  hosts: localhost
   become: true
-
+  become_method: sudo
   roles:
     - apache
     - mysql

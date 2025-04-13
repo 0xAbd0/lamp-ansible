@@ -1,0 +1,5 @@
+[webservers]
+prod-webserver-1 ansible_host=192.168.56.201 ansible_user=fedora
+
+[dbservers]
+prod-dbserver-1 ansible_host=192.168.56.202 ansible_user=fedora
