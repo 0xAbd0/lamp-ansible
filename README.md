@@ -5,7 +5,7 @@ This project automates the deployment and configuration of a full **LAMP stack (
 ---
 
 ## 📁 Project Structure
-.
+
 ├── inventory
 │   ├── dev
 │   └── prod
@@ -34,7 +34,6 @@ This project automates the deployment and configuration of a full **LAMP stack (
         │   └── main.yml
         └── tasks
             └── main.yml
-
 ---
 
 ## 🔧 What It Does
